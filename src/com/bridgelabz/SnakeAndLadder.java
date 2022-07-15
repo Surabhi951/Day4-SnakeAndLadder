@@ -28,5 +28,6 @@ public class SnakeAndLadder {
                 System.out.println("Player1 moves back: " + player1Position);
                 break;
         }
+
     }
 }
