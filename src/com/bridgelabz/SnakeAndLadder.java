@@ -8,18 +8,20 @@ public class SnakeAndLadder {
 
     public static void main(String[] args) {
         int player1Position = 0;
+        int diceCount=0;
         System.out.println("player1 at position: " + player1Position);
-        while (player1Position < WINNING_Position) {
+        while (player1Position<WINNING_Position) {
             int player1Dice = (int) (Math.floor(Math.random() * 10) % 6) + 1;
             int option = (int) Math.floor(Math.random() * 10) % 3;
+            diceCount++;
             switch (option) {
                 case NO_PLAY:
                     System.out.println("Player1 stays in same position: " + player1Position);
                     break;
                 case LADDER:
                     player1Position = player1Position + player1Dice;
-                    if (player1Position > WINNING_Position) {
-                        player1Position = player1Position - player1Dice;
+                    if(player1Position>WINNING_Position) {
+                        player1Position=player1Position-player1Dice;
                         break;
                     }
                     System.out.println("Ladder " + player1Dice + " Player1 position: " + player1Position);
@@ -29,10 +31,11 @@ public class SnakeAndLadder {
                     if (player1Position < 0) {
                         player1Position = 0;
                     }
-                    System.out.println("Snake " + player1Dice + " Player1 position: " + player1Position);
+                    System.out.println("Snake "+player1Dice+" Player1 position: " + player1Position);
                     break;
             }
         }
-        System.out.println("Player1 won: " + player1Position);
+        System.out.println("Player1 won: "+player1Position);
+        System.out.println("Total number of times dice rolled: "+diceCount);
     }
 }
