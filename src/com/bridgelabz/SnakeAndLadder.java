@@ -1,40 +1,32 @@
 package com.bridgelabz;
 
 public class SnakeAndLadder {
-    static final int NO_OPTION =0;
-    static final int SNAKE_OPTION =1;
-
-    static final int LADDER_OPTION =2;
+    public static final int NO_PLAY = 0;
+    public static final int LADDER = 1;
+    public static final int SNAKE = 2;
 
     public static void main(String[] args) {
-        int position = 0;
-       int diaValue = rollDie();
-        System.out.println("DiaValue is:" + diaValue);
+        int player1Position = 0;
+        System.out.println("player1 at position: " + player1Position);
+        int player1Dice = (int) (Math.floor(Math.random() * 10) % 6) + 1;
+        System.out.println("Dice rolled value: " + player1Dice);
 
-        int option = getOption();
-        System.out.println("option is:" + option);
-
-        if(option == NO_OPTION){
-            System.out.println("No option");
+        int option = (int) Math.floor(Math.random() * 10) % 3;
+        switch (option) {
+            case NO_PLAY:
+                System.out.println("Player1 stays in same position: " + player1Position);
+                break;
+            case LADDER:
+                player1Position = player1Position + player1Dice;
+                System.out.println("Player1 moves ahead by: " + player1Position);
+                break;
+            case SNAKE:
+                player1Position = player1Position - player1Dice;
+                if (player1Position < 0) {
+                    player1Position = 0;
+                }
+                System.out.println("Player1 moves back: " + player1Position);
+                break;
         }
-        else if(option == SNAKE_OPTION ){
-            System.out.println("got a snake");
-
-        }
-        else if(option ==LADDER_OPTION ){
-            System.out.println("got a ladder");
-        }
-
-    }
-
-    static int rollDie(){
-        int random1 = (int) ((Math.random()*10) % 6);
-        return random1;
-
-    }
-
-    static int getOption(){
-        int random2 = (int) ((Math.random()*10) % 3);
-        return random2;
     }
 }
